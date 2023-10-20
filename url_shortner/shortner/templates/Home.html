@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>URL Shortener</title>
+</head>
+
+<style>
+    body {
+        height: 100vh;
+        background-color: silver;
+        font-family:'Time New Roman';
+        text-align: center;
+    }
+        .container {
+            margin: 100px auto;
+            width: 80%;
+        }
+        h1 {
+            font-family:'Comic Sans MS';
+            color: red;
+        }
+        #urlInput {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        #shortenButton {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        #shortenButton:hover {
+            background-color: #2980b9;
+        }
+        #shortenedURL {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    
+    
+</style>
+
+<body>
+    <div class="container">
+        <h1>URL Shortener Using Python and Django</h1>
+        <center><img src="{% static 'py&django.webp' %}" height=282 width=530 alt="Python + Django"></center>
+        <form method="post" id="urlInput">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="button" id="shortenButton">Submit</button>
+        </form>
+
+        <h4 id="shortenedURL">Shortened URL is: {{ request.get_host }}/{{ token }}</h4>
+    </div>
+</body>
+</html>
